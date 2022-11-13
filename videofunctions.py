@@ -1,28 +1,33 @@
-from pytube import YouTube, Playlist
+from tkinter import PhotoImage
+from pytube import Playlist, YouTube
 
-def download_highest_resoulution(link):
+
+def download_highest_resoulution(link, user_path):
     print('Downloading..')
     yt = YouTube(link)
     yd = yt.streams.get_highest_resolution()
     print("Done! Enjoy!")
-    yd.download(r'C:\Users\Klaudia\PycharmProjects\python\yt-downloader\download-files')
+    yd.download(user_path)
 
 
-def download_mp3(link):
+def download_audio_mp4(link, user_path):
     yt = YouTube(link)
     print("Downloading...")
     yd = yt.streams.get_audio_only()
-    yd.download(r'C:\Users\Klaudia\PycharmProjects\python\yt-downloader\download-files')
+    subName = yd.default_filename.split('.')
+    fileName = subName[0] + '-audio.' + subName[1]
+    print(fileName)
+    yd.download(user_path, fileName)
     print("Done! Enjoy!")
 
 
-def downloadPlaylist(link):
+def download_playlist(link, user_path):
     playlist = Playlist(link)
     results = playlist.video_urls
     print('Loading videos...')
     print(results)
 
     for item in results:
-        download_mp3(item)
+        download_audio_mp4(item)
 
 
