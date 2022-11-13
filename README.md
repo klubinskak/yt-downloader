@@ -1,5 +1,5 @@
 # yt-downloader-gui
- YouTube GUI movies downloader made with Python 🤍
+ YouTube GUI files downloader made with Python 🤍
 
 Packages: 
 - pytube
